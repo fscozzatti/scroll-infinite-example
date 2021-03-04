@@ -32,17 +32,24 @@ function App() {
 
   return (
   <>
-    <input type="text" value={query} onChange={handleSearch}></input>
+    <ul class="list-group">
+    <div className="contentFilter">
+      <h1>Aplicación para buscar Titulos de Libros</h1>
+      <nav>
+        <input type="text" placeholder="Buscar libro por Título" value={query} onChange={handleSearch} className="inputLargo"></input>
+      </nav>
+    </div>
     {books.map((book, index) => {
       if (books.length === index + 1){
-        return <div ref={lastBookElementRef} key={book}>{book}</div>
+        return <li class="list-group-item" ref={lastBookElementRef} key={book}>{book}</li>
       }else{
-        return <div key={book}>{book}</div>
+        return <li class="list-group-item" key={book}>{book}</li>
       }
 
     })}
     <div>{loading && 'Loading...'}</div>
     <div>{error && 'Error'}</div>
+    </ul>
   </>
   );
 }
